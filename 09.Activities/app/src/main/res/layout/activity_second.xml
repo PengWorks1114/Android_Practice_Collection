@@ -7,4 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="67dp"
+        android:layout_height="25dp"
+        android:text="@string/activity_2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
