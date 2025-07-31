@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SeekBar</string>
-    <string name="text_view_text">Rate</string>
+    <string name="text_view_text">Rate 0</string>
+    <string name="text_view_text_rate">What is the reating of this course ?</string>
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -28,15 +29,16 @@ class MainActivity : AppCompatActivity() {
 
         seekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-
+                Toast.makeText(this@MainActivity, "onProgressChanged",Toast.LENGTH_SHORT).show()
+                textViewProgress.text = "Rate =" + seekBar?.progress.toString()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
+                Toast.makeText(this@MainActivity, "onStartTrackingToch",Toast.LENGTH_SHORT).show()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
+                Toast.makeText(this@MainActivity, "onStopTakingTouch",Toast.LENGTH_SHORT).show()
             }
 
         })
