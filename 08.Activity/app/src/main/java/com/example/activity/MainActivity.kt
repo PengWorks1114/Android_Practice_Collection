@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        Toast.makeText(this@MainActivity, "onCreate called", Toast.LENGTH_SHORT).show()
+
     }
 
     override fun onStart() {
