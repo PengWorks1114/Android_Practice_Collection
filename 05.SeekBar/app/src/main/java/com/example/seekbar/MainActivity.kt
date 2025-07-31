@@ -28,17 +28,19 @@ class MainActivity : AppCompatActivity() {
         textViewProgress = findViewById(R.id.textViewProgress)
 
         seekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 Toast.makeText(this@MainActivity, "onProgressChanged",Toast.LENGTH_SHORT).show()
-                textViewProgress.text = "Rate =" + seekBar?.progress.toString()
+                textViewProgress.text = "Rate =" + seekBar.progress.toString()
             }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            override fun onStartTrackingTouch(p0: SeekBar?) {
                 Toast.makeText(this@MainActivity, "onStartTrackingToch",Toast.LENGTH_SHORT).show()
             }
 
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            override fun onStopTrackingTouch(p0: SeekBar?) {
                 Toast.makeText(this@MainActivity, "onStopTakingTouch",Toast.LENGTH_SHORT).show()
+                textViewProgress.text = "Final Rate =" + p0!!.progress.toString()
+
             }
 
         })
