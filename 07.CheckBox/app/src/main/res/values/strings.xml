@@ -4,4 +4,5 @@
     <string name="check_box_kotlin">Kotliin</string>
     <string name="check_box_java">Java</string>
     <string name="check_box_python">Python</string>
+    <string name="button_text">Show</string>
 </resources>
