@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CheckBox</string>
+    <string name="text_view_question">What programming language you like?</string>
+    <string name="check_box_kotlin">Kotliin</string>
+    <string name="check_box_java">Java</string>
+    <string name="check_box_python">Python</string>
 </resources>
