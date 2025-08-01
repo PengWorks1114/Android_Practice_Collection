@@ -8,6 +8,7 @@
     tools:context=".MainActivity"
     android:padding="16dp"
     android:background="@drawable/bg"
+    android:id="@+id/main"
     android:gravity="center">
 
     <TextView
