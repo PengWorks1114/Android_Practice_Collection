@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
             if (!editTextName.text.isEmpty()) {
                 Intent(this@MainActivity, QuestionsActivity::class.java).also {
                     startActivity(it)
+                    finish()
                 }
             } else {
                 Toast.makeText(this@MainActivity, "Please enter your naem",Toast.LENGTH_SHORT).show()
