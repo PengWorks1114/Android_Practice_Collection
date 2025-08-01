@@ -63,10 +63,56 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView
+            android:id="@+id/text_view_option_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:textStyle="bold"/>
+            android:textColor="@android:color/darker_gray"
+            android:gravity="center"
+            android:textSize="20sp"
+            tools:text="Option 1"
+            android:textStyle="normal"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/text_view_option_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:gravity="center"
+            android:textSize="20sp"
+            tools:text="Option 2"
+            android:textStyle="normal"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/text_view_option_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:gravity="center"
+            android:textSize="20sp"
+            tools:text="Option 3"
+            android:textStyle="normal"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/text_view_option_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:gravity="center"
+            android:textSize="20sp"
+            tools:text="Option 4"
+            android:textStyle="normal"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/button_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/check"
+            android:textColor="@color/white"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
