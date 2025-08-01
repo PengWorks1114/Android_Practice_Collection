@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() { // 宣告 MainActivity，繼承自 Ap
 
             // 利用 Constants 中的常數，將三筆資料傳給 SecondActivity
             intent.putExtra(Constants.INTENT_MESSAGE_KEY, "Hello from first Activity") // 傳送字串
-            intent.putExtra(Constants.INTENT_MESSAGE_KEY2, "How was your day?")        // 傳送另一段字串
+            intent.putExtra(Constants.INTENT_MESSAGE2_KEY, "How was your day?")        // 傳送另一段字串
             intent.putExtra(Constants.INTENT_DATA_NUMBER, 3.14)                        // 傳送一個數值（Double）
 
             // 啟動 SecondActivity
