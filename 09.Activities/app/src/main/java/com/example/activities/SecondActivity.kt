@@ -29,6 +29,7 @@ class SecondActivity : AppCompatActivity() {
 //            取得目前這個 Activity 的啟動 Intent（也就是啟動這個畫面時從上一個畫面傳來的資料）。
 //            這裡將它重新命名為變數 intent，以便後續使用。
 //            也可以選擇創建新的 Intent，但此處是直接使用原有的。
+            intent.putExtra(Constants.INTENT_MESSAGE2_KEY, "Hello form the second activity")
             setResult(Constants.RESULT_CODE,intent)
 //            這是 回傳結果給前一個 Activity 的關鍵方法。
 //            Constants.RESULT_CODE：代表你自定義的回傳結果代碼（通常為 int 值，例如 1, 2 等），用於區分不同來源或狀況。
