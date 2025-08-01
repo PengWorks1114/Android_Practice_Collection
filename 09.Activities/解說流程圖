@@ -1,0 +1,55 @@
+[MainActivity 開啟]
+    │
+    ▼
+【使用者點擊「goToButton」】
+    │
+    ▼
+建立 Intent 並放入資料（putExtra）：
+    ├─ Constants.INTENT_MESSAGE_KEY = "Hello from first Activity"
+    ├─ Constants.INTENT_MESSAGE2_KEY = "How was your day?"
+    └─ Constants.INTENT_DATA_NUMBER = 3.14
+    │
+    ▼
+【呼叫 getResult.launch(intent)】
+啟動 SecondActivity，並等待回傳結果
+    │
+    ▼
+─────────────────────────────────────
+             跳轉至
+         ➤ SecondActivity
+─────────────────────────────────────
+    │
+    ▼
+【onCreate 中讀取 Intent 傳入資料】
+    ├─ message = "Hello from first Activity"
+    ├─ message2 = "How was your day?"
+    ├─ number = 3.14
+    ▼
+畫面顯示資料於 TextView
+    │
+    ▼
+【使用者點擊「goBackButton」】
+    │
+    ▼
+在原 Intent 中加入：
+    └─ Constants.INTENT_MESSAGE2_KEY = "Hello from the second activity"
+    ▼
+呼叫 setResult(Constants.RESULT_CODE, intent)
+    │
+    ▼
+呼叫 finish()，結束 SecondActivity
+    ▼
+─────────────────────────────────────
+             回到
+         ➤ MainActivity
+─────────────────────────────────────
+    │
+    ▼
+getResult 取得回傳的 resultCode & intent
+    ▼
+判斷 resultCode == Constants.RESULT_CODE → 成功
+    ▼
+從回傳的 intent 中取出：
+    └─ Constants.INTENT_MESSAGE2_KEY = "Hello from the second activity"
+    ▼
+將該訊息顯示於 textViewResult
