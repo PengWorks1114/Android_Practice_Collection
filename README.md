@@ -12,5 +12,5 @@
 
 \-在layout直接新增Strings values/新增text的時候直接點燈泡Extract Resource
 
-
+-android:windowSoftInputMode="adjustResize">呼叫鍵盤的時候自動往上擠壓畫面
 
