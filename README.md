@@ -4,5 +4,7 @@
 
 08: 從OnCreate()開始 一個完整的activity運作生命週期
 
-09:多個activities之間的遷移(Intent)
+09:多個activities之間的遷移(Intent)/建立Constants內容方便共同呼叫
+
+10: 第一個app專案/練習多個activities間的遷移/條件式觸發
 
