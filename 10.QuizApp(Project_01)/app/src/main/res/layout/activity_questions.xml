@@ -71,7 +71,9 @@
             android:textSize="20sp"
             tools:text="Option 1"
             android:textStyle="normal"
-            android:layout_marginTop="10dp"/>
+            android:background="@drawable/default_option_border_bg"
+            android:layout_marginTop="10dp"
+            android:minHeight="50dp"/>
 
         <TextView
             android:id="@+id/text_view_option_two"
@@ -82,7 +84,9 @@
             android:textSize="20sp"
             tools:text="Option 2"
             android:textStyle="normal"
-            android:layout_marginTop="10dp"/>
+            android:background="@drawable/default_option_border_bg"
+            android:layout_marginTop="10dp"
+            android:minHeight="50dp"/>
 
         <TextView
             android:id="@+id/text_view_option_three"
@@ -93,7 +97,9 @@
             android:textSize="20sp"
             tools:text="Option 3"
             android:textStyle="normal"
-            android:layout_marginTop="10dp"/>
+            android:background="@drawable/default_option_border_bg"
+            android:layout_marginTop="10dp"
+            android:minHeight="50dp"/>
 
         <TextView
             android:id="@+id/text_view_option_four"
@@ -104,7 +110,9 @@
             android:textSize="20sp"
             tools:text="Option 4"
             android:textStyle="normal"
-            android:layout_marginTop="10dp"/>
+            android:background="@drawable/default_option_border_bg"
+            android:layout_marginTop="10dp"
+            android:minHeight="50dp"/>
 
         <Button
             android:layout_marginTop="10dp"
@@ -112,7 +120,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/check"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:minHeight="50dp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
