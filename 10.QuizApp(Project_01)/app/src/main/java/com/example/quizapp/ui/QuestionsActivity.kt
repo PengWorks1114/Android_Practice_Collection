@@ -148,6 +148,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     showNextQuestion()
                 }
+                selectedAnswer = 0
 
             }
         }
@@ -231,6 +232,42 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                             R.drawable.wrong_option_border_bg
                         )
                 }
+            }
+        }
+        checkButton.text = "Next"
+        showSolution()
+
+    }
+    private fun showSolution() {
+        selectedAnswer = currentQuestion.correctAnswer
+        when (selectedAnswer){
+            1 -> {
+                textViewOptionOne.background =
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.correct_option_border_bg
+                    )
+            }
+            2 -> {
+                textViewOptionTwo.background =
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.correct_option_border_bg
+                    )
+            }
+            3 -> {
+                textViewOptionThree.background =
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.correct_option_border_bg
+                    )
+            }
+            4 -> {
+                textViewOptionFour.background =
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.correct_option_border_bg
+                    )
             }
         }
     }
