@@ -31,7 +31,7 @@ class ResultActivity : AppCompatActivity() {
         textViewName = findViewById(R.id.textview_name)
 
         val totalQuestions = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
-        val score = intent.getStringExtra(Constants.SCORE)
+        val score = intent.getIntExtra(Constants.SCORE, 0)
         val name = intent.getStringExtra(Constants.USER_NAME)
 
         textViewScore.text = "Your score us $score out of $totalQuestions"
