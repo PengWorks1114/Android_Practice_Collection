@@ -92,4 +92,52 @@ class MainActivity : AppCompatActivity() {
         btnStart.isEnabled = true
     }
 
+    fun onClickStartAction(view: View) {
+        // 產生 0~2 的亂數作為 CPU 的手
+        val cpuHand = (0..2).random()
+
+        // 顯示對應圖片
+        val cpuImageRes = when (cpuHand) {
+            0 -> R.drawable.j_gu02
+            1 -> R.drawable.j_ch02
+            else -> R.drawable.j_pa02
+        }
+        imgCpuHand.setImageResource(cpuImageRes)
+        imgCpuHand.visibility = View.VISIBLE
+
+        // 判斷勝負結果
+        judgeJanken(cpuHand)
+
+        // 停用玩家手勢選擇
+        imgGu.isEnabled = false
+        imgChoki.isEnabled = false
+        imgPa.isEnabled = false
+
+        // 按鈕控制
+        btnStart.isEnabled = false
+        btnNext.isEnabled = true
+    }
+
+    private fun judgeJanken(cpuHand: Int) {
+        val resultText = when {
+            playerHand == cpuHand -> {
+                winCount = 0
+                "引き分け！"
+            }
+            (playerHand == 0 && cpuHand == 1) ||
+                    (playerHand == 1 && cpuHand == 2) ||
+                    (playerHand == 2 && cpuHand == 0) -> {
+                winCount++
+                "あなたの勝ち！ $winCount 連勝中！"
+            }
+            else -> {
+                winCount = 0
+                "あなたの負け！"
+            }
+        }
+        txtResult.text = resultText
+    }
+
+
+
 }
