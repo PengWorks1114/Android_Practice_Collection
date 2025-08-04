@@ -38,9 +38,14 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var checkButton: Button
 
-    private val currentPosition = 1
+    private var questionsCounter = 1
     private lateinit var questionsList: MutableList<Question>
     private var selectedOptionPosition = 0
+
+    private var selectedAnswer = 0
+    private lateinit var currentQuestion: Question
+    private var answered = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,26 +80,30 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         questionsList = Constants.getQuestions() //呼叫getquestions()
         Log.d("QuestionSize", "${questionsList.size}") //這裡是log回傳
 
-        setQuestion() //這裡才是實際呼叫去執行內容 在下方
+        showNextQuestion() //這裡才是實際呼叫去執行內容 在下方
     }
 
-    private fun setQuestion() {
-        val question = questionsList[currentPosition - 1]
+    private fun showNextQuestion() {
+        val question = questionsList[questionsCounter - 1]
 
         flagImage.setImageResource(question.image)
-        progressBar.progress = currentPosition //progress -1 等於目前題目第幾題 0為第一題 但在UI端顯示1
-        textViewProgress.text = "$currentPosition/${progressBar.max}"//這是UI端的幾分之幾題目進度
+        progressBar.progress = questionsCounter //progress -1 等於目前題目第幾題 0為第一題 但在UI端顯示1
+        textViewProgress.text = "$questionsCounter/${progressBar.max}"//這是UI端的幾分之幾題目進度
         textViewQuestion.text = question.question //下面就是各個題的題目
         textViewOptionOne.text = question.optionOne
         textViewOptionTwo.text = question.optionTwo
         textViewOptionThree.text = question.optionThree
         textViewOptionFour.text = question.optionFour
 
-        if(currentPosition == questionsList.size) {
-            checkButton.text = "FINISH"
-        } else {
+        if(questionsCounter == questionsList.size) {
             checkButton.text = "CHECK"
+            currentQuestion = questionsList[questionsCounter]
+        } else {
+            checkButton.text = "FINISH"
         }//當最後一題的時候改顯示成"FINISH"
+
+        questionsCounter++
+        answered = false
 
 
     }
@@ -134,6 +143,11 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 selectedOption(textViewOptionFour, 4)
             }
             R.id.button_check -> {
+                if(!answered) {
+                    checkAnswer()
+                } else {
+                    showNextQuestion()
+                }
 
             }
         }
@@ -150,6 +164,75 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             this,
             R.drawable.selected_option_border_bg//選項變紫色
         )
+    }
+
+    private fun checkAnswer() {
+        answered = true
+
+        if (selectedAnswer
+            == currentQuestion.correctAnswer) {
+            when(selectedAnswer) {
+                1 -> {
+                    textViewOptionOne.background =
+                        ContextCompat.getDrawable(
+                            this,
+                            R.drawable.correct_option_border_bg
+                        )
+                }
+                2 -> {
+                    textViewOptionTwo.background =
+                        ContextCompat.getDrawable(
+                            this,
+                            R.drawable.correct_option_border_bg
+                        )
+                }
+                3 -> {
+                    textViewOptionThree.background =
+                        ContextCompat.getDrawable(
+                            this,
+                            R.drawable.correct_option_border_bg
+                        )
+                }
+                4 -> {
+                    textViewOptionFour.background =
+                        ContextCompat.getDrawable(
+                            this,
+                            R.drawable.correct_option_border_bg
+                        )
+                }
+            }
+        } else {
+            when(selectedAnswer) {
+                1 -> {
+                    textViewOptionOne.background =
+                        ContextCompat.getDrawable(
+                            this,
+                            R.drawable.wrong_option_border_bg
+                        )
+                }
+                2 -> {
+                    textViewOptionTwo.background =
+                        ContextCompat.getDrawable(
+                            this,
+                            R.drawable.wrong_option_border_bg
+                        )
+                }
+                3 -> {
+                    textViewOptionThree.background =
+                        ContextCompat.getDrawable(
+                            this,
+                            R.drawable.wrong_option_border_bg
+                        )
+                }
+                4 -> {
+                    textViewOptionFour.background =
+                        ContextCompat.getDrawable(
+                            this,
+                            R.drawable.wrong_option_border_bg
+                        )
+                }
+            }
+        }
     }
 
 }
