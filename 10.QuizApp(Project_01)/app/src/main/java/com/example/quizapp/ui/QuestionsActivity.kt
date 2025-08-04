@@ -37,7 +37,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private val currentPosition = 1
     private lateinit var questionsList: MutableList<Question>
-    private val selectedOptionPosition: 0
+    private val selectedOptionPosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,9 +87,11 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    override fun onClick(view: View?) {
+    override fun onClick(view: View?) {//?問號是允許null型別
 //        這一行是在實作 Android 中的點擊事件處理機制，屬於 Kotlin 的函式覆寫（override）語法 + Android 的 View 點擊處理架構。
-        when(view?.id)
+        when(view?.id){//如果 view 不是 null，就取出它的 id 屬性
+
+        }
     }
 
 }
