@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private var running = false
     private var pauseOffset: Long = 0L
+    //待修正:新增到毫秒計算 還有record功能
 
 //    lateinit var：延遲初始化變數，會在 onCreate() 中透過 findViewById 初始化。
 //    running：布林值，紀錄計時器是否正在執行。
