@@ -35,17 +35,23 @@ class MainActivity : AppCompatActivity() {
         txtCollectMoney = findViewById(R.id.txtCollectMoney)
         txtMyPay = findViewById(R.id.txtMyPay)
 
-        // Spinner 初始化（2~9人）
-        val peopleOptions = (2..9).map { "$it 人" }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, peopleOptions)
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.people_array,
+            android.R.layout.simple_spinner_dropdown_item
+        )
         spinnerPeople.adapter = adapter
+
+        // 設定 hint 與按鈕文字（使用 strings.xml）
+        edtTotalPay.hint = getString(R.string.hint_total_pay)
+        btnCalculate.text = getString(R.string.btn_calculate)
 
         // 按鈕點擊事件
         btnCalculate.setOnClickListener {
             val inputText = edtTotalPay.text.toString()
 
             if (inputText.isEmpty()) {
-                Toast.makeText(this, "請輸入總金額", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_input_required), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -54,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             val number = selectedIndex + 2 // 人數為 2~9 對應位置 0~7
 
             if (totalPay == null || number <= 1) {
-                Toast.makeText(this, "輸入格式錯誤", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_input_error), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -69,8 +75,8 @@ class MainActivity : AppCompatActivity() {
         val collect = if (remainder == 0) base else base + 1
         val kanjiPay = totalPay - (collect * (number - 1))
 
-        txtCollectMoney.text = "每人收取金額：${collect} 円"
-        txtMyPay.text = "幹事支付金額：${kanjiPay} 円"
+        txtCollectMoney.text = getString(R.string.txt_collect_money_prefix) + "${collect} 円"
+        txtMyPay.text = getString(R.string.txt_kanji_pay_prefix) + "${kanjiPay} 円"
 
         Log.i("splitbill_log", "金額=$totalPay 人數=$number 每人=$collect 幹事=$kanjiPay")
     }

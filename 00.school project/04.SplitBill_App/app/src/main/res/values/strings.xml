@@ -1,14 +1,20 @@
 <resources>
-    <string name="app_name">割り勘アプリ</string>
-    <string name="hint_total_pay">金額を入力してください</string>
-    <string-array name="people_options">
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
+        <string name="app_name">割り勘計算</string>
+        <string name="hint_total_pay">請輸入總金額</string>
+        <string name="btn_calculate">計算</string>
+        <string name="txt_collect_money_prefix">每人收取金額：</string>
+        <string name="txt_kanji_pay_prefix">幹事支付金額：</string>
+        <string name="toast_input_required">請輸入總金額</string>
+        <string name="toast_input_error">輸入格式錯誤</string>
+
+    <string-array name="people_array">
+        <item>2 人</item>
+        <item>3 人</item>
+        <item>4 人</item>
+        <item>5 人</item>
+        <item>6 人</item>
+        <item>7 人</item>
+        <item>8 人</item>
+        <item>9 人</item>
     </string-array>
 </resources>

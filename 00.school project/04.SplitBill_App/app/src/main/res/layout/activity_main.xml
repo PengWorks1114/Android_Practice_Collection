@@ -13,17 +13,18 @@
         android:id="@+id/edtTotalPay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="請輸入總金額"
-        android:inputType="number"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/hint_total_pay"
         android:importantForAutofill="no"
-        android:maxLength="7" />
+        android:inputType="number"
+        android:maxLength="7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- 人數選擇 Spinner -->
     <Spinner
         android:id="@+id/spinnerPeople"
+        android:entries="@array/people_array"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/edtTotalPay"
@@ -36,34 +37,34 @@
         android:id="@+id/btnCalculate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="計算"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerPeople"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:text="@string/btn_calculate"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPeople" />
 
     <!-- 每人收取金額 -->
     <TextView
         android:id="@+id/txtCollectMoney"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="每人收取金額："
+        android:layout_marginTop="24dp"
+        android:text="@string/txt_collect_money_prefix"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/btnCalculate"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalculate" />
 
     <!-- 幹事支付金額 -->
     <TextView
         android:id="@+id/txtMyPay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="幹事支付金額："
+        android:layout_marginTop="12dp"
+        android:text="@string/txt_kanji_pay_prefix"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/txtCollectMoney"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCollectMoney" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
