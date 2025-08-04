@@ -139,16 +139,16 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun selectedOption(textView: TextView, selectOptionNumber: Int) {
+    private fun selectedOption(textView: TextView, selectOptionNumber: Int) {//選項被點擊時
         resetOptions()
 
         selectedOptionPosition = selectOptionNumber
 
-        textView.setTextColor(Color.parseColor("#363A43"))
-        textView.setTypeface(textView.typeface, Typeface.BOLD)
+        textView.setTextColor(Color.parseColor("#363A43"))//變黑色
+        textView.setTypeface(textView.typeface, Typeface.BOLD)//變粗體
         textView.background = ContextCompat.getDrawable(
             this,
-            R.drawable.selected_option_border_bg
+            R.drawable.selected_option_border_bg//選項變紫色
         )
     }
 
