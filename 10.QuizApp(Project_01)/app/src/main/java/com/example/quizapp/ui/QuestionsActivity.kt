@@ -39,7 +39,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var checkButton: Button
 
-    private var questionsCounter = 1
+    // ❌ 原本為 1，會跳過第一題或導致 IndexOutOfBoundsException
+    private var questionsCounter = 0 // ✅ 從第 0 題開始（即 List 的 index 0）
     private lateinit var questionsList: MutableList<Question>
     private var selectedOptionPosition = 0
 
@@ -83,46 +84,46 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         questionsList = Constants.getQuestions() //呼叫getquestions()
         Log.d("QuestionSize", "${questionsList.size}") //這裡是log回傳
 
-        showNextQuestion() //這裡才是實際呼叫去執行內容 在下方
+
 
         if (intent.hasExtra(Constants.USER_NAME)) {
             name = intent.getStringExtra(Constants.USER_NAME)!!
         }
+        showNextQuestion() //這裡才是實際呼叫去執行內容 在下方
+
     }
 
+    // ✅ 改寫後的 showNextQuestion()
     private fun showNextQuestion() {
+        // ✅ 題目還沒出完，就繼續顯示題目
+        if (questionsCounter < questionsList.size) {
+            currentQuestion = questionsList[questionsCounter] // 取出目前題目
 
+            flagImage.setImageResource(currentQuestion.image) // 顯示國旗圖片
+            progressBar.progress = questionsCounter + 1 // 進度條顯示第幾題（從1開始）
+            textViewProgress.text = "${questionsCounter + 1}/${questionsList.size}" // UI 顯示「第X題 / 總題數」
+            textViewQuestion.text = currentQuestion.question // 顯示題目文字
+            textViewOptionOne.text = currentQuestion.optionOne // 顯示選項1
+            textViewOptionTwo.text = currentQuestion.optionTwo // 顯示選項2
+            textViewOptionThree.text = currentQuestion.optionThree // 顯示選項3
+            textViewOptionFour.text = currentQuestion.optionFour // 顯示選項4
 
-        if(questionsCounter == questionsList.size) {
-            checkButton.text = "CHECK"
-            currentQuestion = questionsList[questionsCounter]
-            val question = questionsList[questionsCounter - 1]
+            checkButton.text = if (questionsCounter == questionsList.size - 1) "FINISH" else "CHECK"
+            // ✅ 如果是最後一題，顯示「FINISH」，否則顯示「CHECK」
 
-            flagImage.setImageResource(question.image)
-            progressBar.progress = questionsCounter //progress -1 等於目前題目第幾題 0為第一題 但在UI端顯示1
-            textViewProgress.text = "$questionsCounter/${progressBar.max}"//這是UI端的幾分之幾題目進度
-            textViewQuestion.text = question.question //下面就是各個題的題目
-            textViewOptionOne.text = question.optionOne
-            textViewOptionTwo.text = question.optionTwo
-            textViewOptionThree.text = question.optionThree
-            textViewOptionFour.text = question.optionFour
-
+            resetOptions() // ✅ 重置選項樣式（避免上一題的選擇殘留）
+            answered = false
+            questionsCounter++ // ✅ 移到下一題的準備
         } else {
-            checkButton.text = "FINISH"
-            //start activiy here
-            Intent(this, ResultActivity::class.java).also {
-                it.putExtra(Constants.USER_NAME, name)
-                it.putExtra(Constants.SCORE, score)
-                it.putExtra(Constants.TOTAL_QUESTIONS, questionsList.size)
-
-                startActivity(it)
+            // ✅ 題目全部出完，跳轉至結果頁
+            val intent = Intent(this, ResultActivity::class.java).apply {
+                putExtra(Constants.USER_NAME, name)
+                putExtra(Constants.SCORE, score)
+                putExtra(Constants.TOTAL_QUESTIONS, questionsList.size)
             }
-        }//當最後一題的時候改顯示成"FINISH"
-
-        questionsCounter++
-        answered = false
-
-
+            startActivity(intent)
+            finish() // ✅ 關閉當前 Activity，避免返回此畫面
+        }
     }
 
     private fun resetOptions() {
@@ -164,8 +165,9 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                     checkAnswer()
                 } else {
                     showNextQuestion()
+                    selectedAnswer = 0
+
                 }
-                selectedAnswer = 0
 
             }
         }

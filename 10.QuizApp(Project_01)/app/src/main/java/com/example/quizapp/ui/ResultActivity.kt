@@ -27,6 +27,8 @@ class ResultActivity : AppCompatActivity() {
             insets
         }
 
+        finishButton = findViewById(R.id.button_finish)
+
         textViewScore = findViewById(R.id.textview_score)
         textViewName = findViewById(R.id.textview_name)
 
@@ -34,7 +36,7 @@ class ResultActivity : AppCompatActivity() {
         val score = intent.getIntExtra(Constants.SCORE, 0)
         val name = intent.getStringExtra(Constants.USER_NAME)
 
-        textViewScore.text = "Your score us $score out of $totalQuestions"
+        textViewScore.text = "Your score is $score out of $totalQuestions"
         textViewName.text = name
 
         finishButton.setOnClickListener {

@@ -60,7 +60,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_finish"
+        android:id="@+id/button_finish"
         android:layout_marginTop="10dp"
         android:background="@color/white"
         android:text="FINISH"
