@@ -65,4 +65,31 @@ class MainActivity : AppCompatActivity() {
         // 選擇手勢再啟用
         playerHand = -1
     }
+
+    fun onClickSelectHand(view: View) {
+        // 全部重設為白底
+        imgGu.setBackgroundColor(Color.WHITE)
+        imgChoki.setBackgroundColor(Color.WHITE)
+        imgPa.setBackgroundColor(Color.WHITE)
+
+        // 判斷哪一張圖片被點選，改為紅色，並設定選擇編號
+        when (view.id) {
+            R.id.imgGu -> {
+                playerHand = 0
+                imgGu.setBackgroundColor(Color.RED)
+            }
+            R.id.imgChoki -> {
+                playerHand = 1
+                imgChoki.setBackgroundColor(Color.RED)
+            }
+            R.id.imgPa -> {
+                playerHand = 2
+                imgPa.setBackgroundColor(Color.RED)
+            }
+        }
+
+        // 啟用「勝負！」按鈕
+        btnStart.isEnabled = true
+    }
+
 }
