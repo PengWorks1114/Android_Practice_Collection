@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Logo 圖片 -->
     <ImageView
         android:id="@+id/img_logo"
         android:layout_width="100dp"
@@ -18,63 +19,88 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
+    <!-- 標題文字 -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/timer_app"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:textSize="50sp"
+        app:layout_constraintTop_toBottomOf="@id/img_logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22"
-        android:textSize="50sp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
-    <!--    Chronometer 時間計數器-->
-    <Chronometer
-        android:id="@+id/chronometer"
+    <!-- 顯示時間（小數秒） -->
+    <TextView
+        android:id="@+id/txt_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="0.00 秒"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp" />
 
-    <!--    start按鈕-->
+    <!-- START 按鈕 -->
     <Button
         android:id="@+id/btn_start"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/start"
-        app:layout_constraintTop_toBottomOf="@+id/chronometer"
+        app:layout_constraintTop_toBottomOf="@id/txt_time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!--    stop按鈕-->
+    <!-- STOP 按鈕 -->
     <Button
         android:id="@+id/btn_stop"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/stop"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start"
+        app:layout_constraintTop_toBottomOf="@id/btn_start"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!--    reset按鈕-->
+    <!-- RESET 按鈕 -->
     <Button
         android:id="@+id/btn_reset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/reset"
-        app:layout_constraintTop_toBottomOf="@+id/btn_stop"
+        app:layout_constraintTop_toBottomOf="@id/btn_stop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- RECORD 按鈕 -->
+    <Button
+        android:id="@+id/btn_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RECORD"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_reset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 記錄列表顯示區 -->
+    <TextView
+        android:id="@+id/txt_record"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:text="記錄："
+        android:textSize="16sp"
+        android:background="#EEEEEE"
+        app:layout_constraintTop_toBottomOf="@id/btn_record"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
