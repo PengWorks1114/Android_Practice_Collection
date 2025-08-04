@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import kotlin.math.ceil
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,10 +62,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // 計算邏輯
+    // 使用一般邏輯運算（不用 ceil）進行割り勘計算
     private fun doCalculation(totalPay: Int, number: Int) {
-        val collect = ceil(totalPay.toDouble() / number).toInt()   // 每人收取
-        val kanjiPay = totalPay - (collect * (number - 1))          // 幹事實際支付
+        val base = totalPay / number
+        val remainder = totalPay % number
+        val collect = if (remainder == 0) base else base + 1
+        val kanjiPay = totalPay - (collect * (number - 1))
 
         txtCollectMoney.text = "每人收取金額：${collect} 円"
         txtMyPay.text = "幹事支付金額：${kanjiPay} 円"
