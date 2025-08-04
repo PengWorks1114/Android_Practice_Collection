@@ -46,19 +46,19 @@ class QuestionsActivity : AppCompatActivity() {
         textViewOptionThree = findViewById(R.id.text_view_option_three)
         textViewOptionFour = findViewById(R.id.text_view_option_four)
 
-        val questionsList = Constants.getQuestions()
-        Log.d("QuestionSize", "${questionsList.size}")
+        questionsList = Constants.getQuestions() //呼叫getquestions()
+        Log.d("QuestionSize", "${questionsList.size}") //這裡是log回傳
 
-        setQuestion()
+        setQuestion() //這裡才是實際呼叫去執行內容 在下方
     }
 
     private fun setQuestion() {
         val question = questionsList[currentPosition - 1]
 
         flagImage.setImageResource(question.image)
-        progressBar.progress = currentPosition
-        textViewProgress.text = "$currentPosition/${progressBar.max}"
-        textViewQuestion.text = question.question
+        progressBar.progress = currentPosition //progress -1 等於目前題目第幾題 0為第一題 但在UI端顯示1
+        textViewProgress.text = "$currentPosition/${progressBar.max}"//這是UI端的幾分之幾題目進度
+        textViewQuestion.text = question.question //下面就是各個題的題目
         textViewOptionOne.text = question.optionOne
         textViewOptionTwo.text = question.optionTwo
         textViewOptionThree.text = question.optionThree
