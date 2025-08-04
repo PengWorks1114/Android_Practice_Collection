@@ -45,6 +45,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private var selectedAnswer = 0
     private lateinit var currentQuestion: Question
+    private lateinit var name: String
+    private var score = 0
     private var answered = false
 
 
@@ -82,6 +84,10 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         Log.d("QuestionSize", "${questionsList.size}") //這裡是log回傳
 
         showNextQuestion() //這裡才是實際呼叫去執行內容 在下方
+
+        if (intent.hasExtra(Constants.USER_NAME)) {
+            name = intent.getStringExtra(Constants.USER_NAME)!!
+        }
     }
 
     private fun showNextQuestion() {
@@ -105,6 +111,10 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             checkButton.text = "FINISH"
             //start activiy here
             Intent(this, ResultActivity::class.java).also {
+                it.putExtra(Constants.USER_NAME, name)
+                it.putExtra(Constants.SCORE, score)
+                it.putExtra(Constants.TOTAL_QUESTIONS, questionsList.size)
+
                 startActivity(it)
             }
         }//當最後一題的時候改顯示成"FINISH"
@@ -176,6 +186,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun checkAnswer() {
         answered = true
+        score++
 
         if (selectedAnswer
             == currentQuestion.correctAnswer) {
