@@ -186,10 +186,11 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun checkAnswer() {
         answered = true
-        score++
+
 
         if (selectedAnswer
             == currentQuestion.correctAnswer) {
+            score++
             highlightAnswer(selectedAnswer)
         } else {
             when(selectedAnswer) {
