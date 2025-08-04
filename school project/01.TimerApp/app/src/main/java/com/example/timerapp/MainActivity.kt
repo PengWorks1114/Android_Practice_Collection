@@ -43,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         btnStop.setOnClickListener { stopChronometer() }
         btnReset.setOnClickListener { resetChronometer() }
 
+        btnStart.isEnabled = true
+        btnStop.isEnabled = false
+        btnReset.isEnabled = false
+
     }
     // 啟動計時器的方法
     private fun startChronometer() {
@@ -57,6 +61,12 @@ class MainActivity : AppCompatActivity() {
 
             // 設定狀態為「計時中」
             running = true
+
+            //啟動後,只允許stop 和 reset
+            btnStart.isEnabled = false
+            btnStop.isEnabled = true
+            btnReset.isEnabled = true
+
         }
     }
 
@@ -72,6 +82,11 @@ class MainActivity : AppCompatActivity() {
 
             // 設定狀態為「未計時」
             running = false
+
+            // 停止後，允許 START 和 RESET，STOP 禁用
+            btnStart.isEnabled = true
+            btnStop.isEnabled = false
+            btnReset.isEnabled = true
         }
     }
 
@@ -87,7 +102,13 @@ class MainActivity : AppCompatActivity() {
         if (!running) {
             chronometer.stop()
         }
+
+        // 重設後，只允許 START，其他禁用
+        btnStart.isEnabled = true
+        btnStop.isEnabled = false
+        btnReset.isEnabled = false
     }
+
 
 
 }
