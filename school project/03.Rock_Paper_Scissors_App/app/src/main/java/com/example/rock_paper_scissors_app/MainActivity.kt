@@ -138,6 +138,33 @@ class MainActivity : AppCompatActivity() {
         txtResult.text = resultText
     }
 
+    fun onClickNextAction(view: View) {
+        // 重設背景顏色
+        imgGu.setBackgroundColor(Color.WHITE)
+        imgChoki.setBackgroundColor(Color.WHITE)
+        imgPa.setBackgroundColor(Color.WHITE)
+
+        // 玩家可以重新點選
+        imgGu.isEnabled = true
+        imgChoki.isEnabled = true
+        imgPa.isEnabled = true
+
+        // 清除結果顯示
+        txtResult.text = ""
+        txtInfo.text = "何連勝できるかな？"
+
+        // 隱藏 CPU 手勢圖片
+        imgCpuHand.visibility = View.INVISIBLE
+
+        // 按鈕狀態
+        btnStart.isEnabled = false
+        btnNext.isEnabled = false
+
+        // 清除玩家手勢選擇
+        playerHand = -1
+    }
+
+
 
 
 }
