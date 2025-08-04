@@ -1,5 +1,6 @@
 package com.example.quizapp.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -84,22 +85,28 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showNextQuestion() {
-        val question = questionsList[questionsCounter - 1]
 
-        flagImage.setImageResource(question.image)
-        progressBar.progress = questionsCounter //progress -1 等於目前題目第幾題 0為第一題 但在UI端顯示1
-        textViewProgress.text = "$questionsCounter/${progressBar.max}"//這是UI端的幾分之幾題目進度
-        textViewQuestion.text = question.question //下面就是各個題的題目
-        textViewOptionOne.text = question.optionOne
-        textViewOptionTwo.text = question.optionTwo
-        textViewOptionThree.text = question.optionThree
-        textViewOptionFour.text = question.optionFour
 
         if(questionsCounter == questionsList.size) {
             checkButton.text = "CHECK"
             currentQuestion = questionsList[questionsCounter]
+            val question = questionsList[questionsCounter - 1]
+
+            flagImage.setImageResource(question.image)
+            progressBar.progress = questionsCounter //progress -1 等於目前題目第幾題 0為第一題 但在UI端顯示1
+            textViewProgress.text = "$questionsCounter/${progressBar.max}"//這是UI端的幾分之幾題目進度
+            textViewQuestion.text = question.question //下面就是各個題的題目
+            textViewOptionOne.text = question.optionOne
+            textViewOptionTwo.text = question.optionTwo
+            textViewOptionThree.text = question.optionThree
+            textViewOptionFour.text = question.optionFour
+
         } else {
             checkButton.text = "FINISH"
+            //start activiy here
+            Intent(this, ResultActivity::class.java).also {
+                startActivity(it)
+            }
         }//當最後一題的時候改顯示成"FINISH"
 
         questionsCounter++
