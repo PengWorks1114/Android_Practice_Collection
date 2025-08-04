@@ -40,7 +40,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private val currentPosition = 1
     private lateinit var questionsList: MutableList<Question>
-    private val selectedOptionPosition = 0
+    private var selectedOptionPosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +62,15 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         textViewOptionTwo = findViewById(R.id.text_view_option_two)
         textViewOptionThree = findViewById(R.id.text_view_option_three)
         textViewOptionFour = findViewById(R.id.text_view_option_four)
+
+        textViewOptionOne.setOnClickListener(this)
+        textViewOptionTwo.setOnClickListener(this)
+        textViewOptionThree.setOnClickListener(this)
+        textViewOptionFour.setOnClickListener(this)
+        //告訴 Android：「當使用者點了 textViewOptionOne（選項一）時，請執行 this 裡的 onClick() 方法。」
+        //這裡的 this 是指 QuestionsActivity 類別本身，因為它實作了 View.OnClickListener。
+        checkButton.setOnClickListener(this)
+
 
         questionsList = Constants.getQuestions() //呼叫getquestions()
         Log.d("QuestionSize", "${questionsList.size}") //這裡是log回傳
@@ -107,11 +116,40 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+
+
     override fun onClick(view: View?) {//?問號是允許null型別
 //        這一行是在實作 Android 中的點擊事件處理機制，屬於 Kotlin 的函式覆寫（override）語法 + Android 的 View 點擊處理架構。
         when(view?.id){//如果 view 不是 null，就取出它的 id 屬性
+            R.id.text_view_option_one -> {
+                selectedOption(textViewOptionOne, 1)
+            }
+            R.id.text_view_option_two -> {
+                selectedOption(textViewOptionTwo, 2)
+            }
+            R.id.text_view_option_three -> {
+                selectedOption(textViewOptionThree, 3)
+            }
+            R.id.text_view_option_four -> {
+                selectedOption(textViewOptionFour, 4)
+            }
+            R.id.button_check -> {
 
+            }
         }
+    }
+
+    private fun selectedOption(textView: TextView, selectOptionNumber: Int) {
+        resetOptions()
+
+        selectedOptionPosition = selectOptionNumber
+
+        textView.setTextColor(Color.parseColor("#363A43"))
+        textView.setTypeface(textView.typeface, Typeface.BOLD)
+        textView.background = ContextCompat.getDrawable(
+            this,
+            R.drawable.selected_option_border_bg
+        )
     }
 
 }
