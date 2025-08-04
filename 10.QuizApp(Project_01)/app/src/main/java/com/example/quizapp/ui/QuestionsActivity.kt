@@ -1,5 +1,7 @@
 package com.example.quizapp.ui
 
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,6 +11,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.quizapp.R
@@ -85,6 +88,23 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         }//當最後一題的時候改顯示成"FINISH"
 
 
+    }
+
+    private fun resetOptions() {
+        val options = mutableListOf<TextView>()//建立一個空的 MutableList，準備放四個選項 TextView。
+        options.add(textViewOptionOne)
+        options.add(textViewOptionTwo)
+        options.add(textViewOptionThree)
+        options.add(textViewOptionFour)
+
+        for (option in options) {
+            option.setTextColor(Color.parseColor("#7A8089"))//把文字顏色設成灰色（Hex 色碼 #7A8089，通常是未選擇狀態的顏色）
+            option.typeface = Typeface.DEFAULT
+            option.background = ContextCompat.getDrawable(
+            this,
+            R.drawable.default_option_border_bg
+            )
+        }
     }
 
     override fun onClick(view: View?) {//?問號是允許null型別
