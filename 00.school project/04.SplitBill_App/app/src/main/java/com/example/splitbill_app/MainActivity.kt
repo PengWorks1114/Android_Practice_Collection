@@ -16,6 +16,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnCalculate: Button
     private lateinit var txtCollectMoney: TextView
     private lateinit var txtMyPay: TextView
+    private lateinit var radioGroupUnit: RadioGroup
+    private lateinit var checkboxKanjiBonus: CheckBox
+    private lateinit var toggleSecondParty: ToggleButton
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +40,20 @@ class MainActivity : AppCompatActivity() {
         btnCalculate = findViewById(R.id.btnCalculate)
         txtCollectMoney = findViewById(R.id.txtCollectMoney)
         txtMyPay = findViewById(R.id.txtMyPay)
+        radioGroupUnit = findViewById(R.id.radioGroupUnit)
+        checkboxKanjiBonus = findViewById(R.id.checkboxKanjiBonus)
+        toggleSecondParty = findViewById(R.id.toggleSecondParty)
+
+
+        val isKanjiBonus = checkboxKanjiBonus.isChecked
+
+
+        val selectedUnit = when (radioGroupUnit.checkedRadioButtonId) {
+            R.id.radio100 -> 100
+            R.id.radio500 -> 500
+            R.id.radio1000 -> 1000
+            else -> 100 // 預設
+        }
 
 // Spinner 初始化（從 strings.xml 的 string-array 讀取）
         val adapter = ArrayAdapter.createFromResource(
@@ -86,16 +106,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // 使用一般邏輯運算（不用 ceil）進行割り勘計算
     private fun doCalculation(totalPay: Int, number: Int) {
-        val base = totalPay / number
-        val remainder = totalPay % number
-        val collect = if (remainder == 0) base else base + 1
-        val kanjiPay = totalPay - (collect * (number - 1))
+        val roundUnit = when {
+            findViewById<RadioButton>(R.id.radio500).isChecked -> 500
+            findViewById<RadioButton>(R.id.radio1000).isChecked -> 1000
+            else -> 100
+        }
 
-        txtCollectMoney.text = getString(R.string.txt_collect_money_prefix) + "${collect} 円"
-        txtMyPay.text = getString(R.string.txt_kanji_pay_prefix) + "${kanjiPay} 円"
+        val isSecondParty = toggleSecondParty.isChecked
+        val isKanjiBonus = findViewById<CheckBox>(R.id.checkboxKanjiBonus).isChecked
 
-        Log.i("splitbill_log", "金額=$totalPay 人數=$number 每人=$collect 幹事=$kanjiPay")
+        val (perPerson, kanjiPay) = Calculation.calculate(
+            totalPay,
+            number,
+            roundUnit,
+            isSecondParty,
+            isKanjiBonus
+        )
+
+        txtCollectMoney.text = "每人收取金額：${perPerson} 円"
+        txtMyPay.text = "幹事支付金額：${kanjiPay} 円"
+
+        Log.i("splitbill_log", "金額=$totalPay 人數=$number 每人=$perPerson 幹事=$kanjiPay")
     }
+
+
 }

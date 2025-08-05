@@ -17,6 +17,14 @@
     <string name="unit_500">500円</string>
     <string name="unit_1000">1000円</string>
 
+    <string name="label_kanji_bonus">幹事得模式（幹事少付）</string>
+
+    <string name="label_second_party">二次會模式（多收預留）</string>
+    <string name="toggle_on">ON</string>
+    <string name="toggle_off">OFF</string>
+
+
+
 
     <string-array name="people_array">
         <item>2 人</item>

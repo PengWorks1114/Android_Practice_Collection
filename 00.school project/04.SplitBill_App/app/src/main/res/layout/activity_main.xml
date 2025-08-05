@@ -29,21 +29,96 @@
         android:importantForAutofill="no"
         android:inputType="number"
         android:maxLength="7"
+        android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@id/imgLogo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 人數選擇 Spinner -->
+    <!-- 集金單位選擇文字 -->
+    <TextView
+        android:id="@+id/lblRoundUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_round_unit"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/edtTotalPay"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 集金單位選擇按鈕群 -->
+    <RadioGroup
+        android:id="@+id/radioGroupUnit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/lblRoundUnit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <RadioButton
+            android:id="@+id/radio100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unit_100" />
+
+        <RadioButton
+            android:id="@+id/radio500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unit_500" />
+
+        <RadioButton
+            android:id="@+id/radio1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unit_1000" />
+    </RadioGroup>
+
+    <!-- 幹事得 CheckBox -->
+    <CheckBox
+        android:id="@+id/checkboxKanjiBonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_kanji_bonus"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/radioGroupUnit"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 二次會模式 標籤 -->
+    <TextView
+        android:id="@+id/lblSecondParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_second_party"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/checkboxKanjiBonus"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 二次會模式 Toggle -->
+    <ToggleButton
+        android:id="@+id/toggleSecondParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/toggle_off"
+        android:textOn="@string/toggle_on"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/lblSecondParty"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 人數 Spinner -->
     <Spinner
         android:id="@+id/spinnerPeople"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:entries="@array/people_array"
-        app:layout_constraintTop_toBottomOf="@id/edtTotalPay"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/toggleSecondParty"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- 計算按鈕 -->
     <Button
@@ -51,10 +126,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_calculate"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/spinnerPeople"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- 每人收取金額 -->
     <TextView
