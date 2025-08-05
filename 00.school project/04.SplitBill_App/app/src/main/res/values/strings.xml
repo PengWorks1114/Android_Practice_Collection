@@ -6,6 +6,9 @@
         <string name="txt_kanji_pay_prefix">幹事支付金額：</string>
         <string name="toast_input_required">請輸入總金額</string>
         <string name="toast_input_error">輸入格式錯誤</string>
+    <string name="toast_input_must_be_positive">金額必須大於 0</string>
+    <string name="toast_input_too_large">金額不可超過 7 位數</string>
+
 
     <string-array name="people_array">
         <item>2 人</item>

@@ -9,6 +9,8 @@
     android:padding="16dp">
 
     <!-- 金額輸入欄 -->
+    <!--inportantForAutofill不會自動填入建議-->
+    <!--    inputType輸入鍵盤變為數字鍵-->
     <EditText
         android:id="@+id/edtTotalPay"
         android:layout_width="0dp"

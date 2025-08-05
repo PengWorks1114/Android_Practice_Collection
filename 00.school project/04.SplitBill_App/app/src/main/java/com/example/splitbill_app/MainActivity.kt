@@ -35,12 +35,14 @@ class MainActivity : AppCompatActivity() {
         txtCollectMoney = findViewById(R.id.txtCollectMoney)
         txtMyPay = findViewById(R.id.txtMyPay)
 
+// Spinner 初始化（從 strings.xml 的 string-array 讀取）
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.people_array,
             android.R.layout.simple_spinner_dropdown_item
         )
         spinnerPeople.adapter = adapter
+
 
         // 設定 hint 與按鈕文字（使用 strings.xml）
         edtTotalPay.hint = getString(R.string.hint_total_pay)
@@ -55,14 +57,30 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val totalPay = inputText.toIntOrNull()
             val selectedIndex = spinnerPeople.selectedItemPosition
             val number = selectedIndex + 2 // 人數為 2~9 對應位置 0~7
 
-            if (totalPay == null || number <= 1) {
+            if (inputText.isEmpty()) {
+                Toast.makeText(this, getString(R.string.toast_input_required), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val totalPay = inputText.toIntOrNull()
+            if (totalPay == null) {
                 Toast.makeText(this, getString(R.string.toast_input_error), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            if (totalPay <= 0) {
+                Toast.makeText(this, getString(R.string.toast_input_must_be_positive), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (totalPay > 9999999) {
+                Toast.makeText(this, getString(R.string.toast_input_too_large), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
 
             doCalculation(totalPay, number)
         }
