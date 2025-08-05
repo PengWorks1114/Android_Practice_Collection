@@ -2,6 +2,8 @@ package com.example.webwiew_app
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -79,5 +81,52 @@ class MainActivity : AppCompatActivity() {
 //            super 代表呼叫原本 Activity 的行為，通常就是 結束當前 Activity（也就是關閉 App 或回前一個畫面）。
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.options_menu, menu)
+        return true // 顯示選單
+    }
+//    這是覆寫 Activity 或 AppCompatActivity 中的生命週期方法。
+//    當使用者第一次打開畫面、或按下選單鍵時，這個方法會被呼叫。
+//    用來建立畫面右上角的選單內容（通常是三個點點 ⋮ 展開的選單）。
+//    menuInflater.inflate(R.menu.options_menu, menu)
+//    使用 menuInflater 將指定的選單 XML（這裡是 res/menu/options_menu.xml）
+//    轉換成實際可用的選單項目，並加到畫面上的 menu 物件中。
+//    R.menu.options_menu 是你在 res/menu/ 資料夾下所建立的 XML 檔案名稱。
+//    例如：res/menu/options_menu.xml
+//    該 XML 檔會定義多個 <item>，例如 Google、Yahoo、GitHub、Exit 等選項。
+//    return true
+//    回傳 true 表示：「這個 Activity 想要顯示選單」。
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        當使用者選擇任一選單項目（例如 Google、Yahoo、GitHub、Exit）時，這個方法就會被呼叫。
+//        參數 item 是使用者剛剛點擊的選單項目。
+        when (item.itemId) {
+//                 使用 when 判斷被點擊的選單項目的 ID
+//                （來自 res/menu/options_menu.xml 中的 <item android:id="..." />）。
+            R.id.menu_google -> {
+                loadWebPage("https://www.google.com")
+                return true
+            }
+            R.id.menu_yahoo -> {
+                loadWebPage("https://news.yahoo.co.jp")
+                return true
+            }
+            R.id.menu_github -> {
+                loadWebPage("https://github.com")
+                return true
+            }
+            R.id.menu_exit -> {
+                finish() // 結束應用程式
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+//        如果點擊的項目不在 when 條件中（即沒有對應的處理邏輯），則呼叫原本的預設處理方法。
+    }
+
+
 
 }
