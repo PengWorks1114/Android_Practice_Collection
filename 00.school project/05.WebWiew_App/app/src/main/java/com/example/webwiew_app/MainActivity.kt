@@ -63,6 +63,16 @@ class MainActivity : AppCompatActivity() {
 //        webSettings 是操作 WebView 設定用的物件。
 //        webSettings.javaScriptEnabled 設定是否啟用 JavaScript。
 
+
+        // ✅ 加入縮放設定
+        webSettings.setSupportZoom(true)               // 支援縮放（必須）
+        webSettings.builtInZoomControls = true         // 顯示縮放按鈕（預設不顯示）
+        webSettings.displayZoomControls = false        // 隱藏內建縮放控制 UI（用手勢控制更直覺）
+
+        // ✅ 加入其他常見強化設定（選用）
+        webSettings.useWideViewPort = true             // 支援螢幕適應
+        webSettings.loadWithOverviewMode = true        // 預設載入全畫面
+
         webView.loadUrl(url)
     }
 
@@ -130,3 +140,4 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
