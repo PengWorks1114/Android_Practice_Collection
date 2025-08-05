@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_google"
+        android:title="Google" />
+    <item
+        android:id="@+id/menu_yahoo"
+        android:title="Yahoo" />
+    <item
+        android:id="@+id/menu_github"
+        android:title="GitHub" />
+    <item
+        android:id="@+id/menu_exit"
+        android:title="結束" />
+</menu>
+
+<!--    res > menu 右鍵 → New → Menu Resource File-->
+<!--    新增menu選單的方法-->
