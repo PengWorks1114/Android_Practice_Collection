@@ -73,25 +73,28 @@ class MainActivity : AppCompatActivity() {
         gridLayout.columnCount = 5 //橫向
         gridLayout.rowCount = 5 //縱向
 
+        val textSize = resources.getDimension(R.dimen.question_text_size)
+
         for (i in 0 until 25) {
-            // 建立新的 TextView 作為格子
             val cell = TextView(this)
-            cell.text = "" // 預設先不顯示文字
-            cell.textSize = 24f
-            cell.setPadding(8, 8, 8, 8)
+            cell.text = ""
+            cell.textSize = textSize / resources.displayMetrics.scaledDensity // 單位轉換為 sp
+            cell.setPadding(4, 4, 4, 4)
             cell.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+
+            // 🎨 加框線（可選） - 讓格子比較有分隔感
+            cell.setBackgroundResource(android.R.drawable.alert_light_frame)
+
             cell.layoutParams = GridLayout.LayoutParams().apply {
                 width = 120
                 height = 120
                 rowSpec = GridLayout.spec(i / 5)
-                //決定這個格子在第幾「列（row）」 -> 當 i = 0~4 ➜ 第 0 列/當 i = 5~9 ➜ 第 1 列
                 columnSpec = GridLayout.spec(i % 5)
+                setMargins(4, 4, 4, 4)
             }
 
-            // 加入到 GridLayout 與記錄用 List 中
             gridLayout.addView(cell)
             cellViews.add(cell)
-
         }
     }
 
