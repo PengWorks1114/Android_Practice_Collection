@@ -52,6 +52,8 @@ class MainActivity : AppCompatActivity() {
         edtAnswer = findViewById(R.id.edtAnswer)
         btnCheck = findViewById(R.id.btnCheck)
         btnGiveUp = findViewById(R.id.btnGiveUp)
+        btnNext = findViewById(R.id.btnNext)
+        btnRetry = findViewById(R.id.btnRetry)
 
         // 建立5x5 格子 (TextView)
         createGrid()
