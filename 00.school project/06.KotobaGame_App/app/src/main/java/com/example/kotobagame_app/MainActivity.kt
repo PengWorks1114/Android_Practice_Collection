@@ -183,7 +183,7 @@ class MainActivity : AppCompatActivity() {
         currentIndex++
 
         // ⛔ 若題目用完，顯示結果並退出
-        if (currentIndex >= questions.size) {
+        if (currentIndex >= questions.size - 1) {
             val percent = (correctCount * 100 / questions.size)
             val result = when {
                 percent == 100 -> "すごい！漢字博士か？！"
@@ -194,13 +194,14 @@ class MainActivity : AppCompatActivity() {
 
             Toast.makeText(this, "おつかれさまでした\n成績：$correctCount / ${questions.size}\n$result", Toast.LENGTH_LONG).show()
 
-            // 延遲 2 秒結束遊戲
-            gridLayout.postDelayed({
-                finish()
-            }, 2000)
+            // 隱藏下一題按鈕、禁用確認按鈕
+            btnNext.isEnabled = false
+            btnCheck.isEnabled = false
+            btnRetry.visibility = View.VISIBLE
         } else {
-            loadQuestion() // 下一題
+            isAnswered = true // ✅ 只允許答對後按「下一題」
         }
+
     }
 
 }
