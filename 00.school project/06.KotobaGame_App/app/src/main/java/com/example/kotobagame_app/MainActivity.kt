@@ -1,6 +1,7 @@
 package com.example.kotobagame_app
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.GridLayout
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var edtAnswer: EditText
     private lateinit var btnCheck: Button
     private lateinit var btnGiveUp: Button
+    private lateinit var btnNext: Button
+    private lateinit var btnRetry: Button
     private var isAnswered = false // 用來判斷是否已答題
     //lateinit 的用途限制 : lateinit 關鍵字只能用在 var 修飾的「非 primitive 型別」變數，例如：
     //可以用在 var textView: TextView
@@ -70,6 +73,26 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "結束遊戲", Toast.LENGTH_SHORT).show()
             finish() //關閉App
         }
+
+        btnNext.setOnClickListener {
+            if (isAnswered) {
+                currentIndex++
+                loadQuestion()
+                isAnswered = false
+            } else {
+                Toast.makeText(this, "請先完成回答", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnRetry.setOnClickListener {
+            currentIndex = 0
+            correctCount = 0
+            btnRetry.visibility = View.GONE
+            btnCheck.isEnabled = true
+            btnNext.isEnabled = true
+            loadQuestion()
+        }
+
     }
 
     private fun createGrid() {
