@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         app:columnCount="5"
         app:rowCount="5"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
     <!-- 解答輸入區域 -->
     <EditText
@@ -26,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:textSize="18sp" />
 
-    <!-- 功能按鈕 -->
+    <!-- 三個按鈕：確認、下一題、放棄 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,10 +41,26 @@
             android:text="確認" />
 
         <Button
+            android:id="@+id/btnNext"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="下一題" />
+
+        <Button
             android:id="@+id/btnGiveUp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="放棄" />
     </LinearLayout>
+
+    <!-- 重新挑戰按鈕（預設隱藏） -->
+    <Button
+        android:id="@+id/btnRetry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="重新挑戰"
+        android:visibility="gone" />
 </LinearLayout>
