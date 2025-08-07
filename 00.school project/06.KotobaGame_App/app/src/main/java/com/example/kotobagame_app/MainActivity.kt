@@ -115,14 +115,15 @@ class MainActivity : AppCompatActivity() {
         // 將題目字串的每個字依序放入格子（部分位置空白）
         // 教材圖示中安排的位置如下（0~24為格子索引）：
         val map = mapOf(
-            1 to q[0].toString(),   // 相
-            11 to q[1].toString(),  // ↓
-            10 to q[2].toString(),  // 的
-            12 to q[3].toString(),  // →
-            13 to q[4].toString(),  // →
-            14 to q[5].toString(),  // 比
-            21 to q[6].toString(),  // ↓
-            23 to q[7].toString(),  // 抵
+            1 to q[0].toString(),     // 相
+            11 to "↓",                // 箭頭
+            10 to q[1].toString(),    // 的
+            12 to q[2].toString(),    // →
+            13 to "→",                // 箭頭
+            14 to q[3].toString(),    // 比
+            21 to "↓",                // 箭頭
+            23 to q[4].toString(),    // 抵
+            24 to q[5].toString()     // 最後一字
         )
 
         // 依照位置寫入字，其他空白
