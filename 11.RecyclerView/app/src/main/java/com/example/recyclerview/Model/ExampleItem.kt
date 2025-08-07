@@ -1,4 +1,3 @@
 package com.example.recyclerview.Model
 
-class ExampleItem {
-}
+data class ExampleItem (val title: String, val description: String)
