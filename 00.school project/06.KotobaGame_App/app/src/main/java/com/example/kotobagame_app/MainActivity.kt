@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var edtAnswer: EditText
     private lateinit var btnCheck: Button
     private lateinit var btnGiveUp: Button
+    private var isAnswered = false // 用來判斷是否已答題
+    //lateinit 的用途限制 : lateinit 關鍵字只能用在 var 修飾的「非 primitive 型別」變數，例如：
+    //可以用在 var textView: TextView
+    //❌ 不能用在 Int、Boolean、Double 等原始類型
 
     // 題目資料 listOf形式
     private val questions = listOf(
